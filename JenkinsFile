@@ -1,9 +1,13 @@
 @Library('Jenkins-Shared-Library')_
 pipeline {
     agent any
-    APP_IMAGE_NAME      = 'mostafayounis0/new-app'   //DockerHubub_repo/Image_name
-        Dockerfile_PATH     = 'Lab/Dockerfile'	       //Path to Dockerfile in github repo
-        DEPLOYMENT_PATH     = 'Lab/deployment.yaml'     //Path to deployment.yaml file in github repo 
+   dockerHubCredentialsID    = 'dockerhub'                 // DockerHub credentials ID.
+   imageName                 = 'mostafayounis0/Dockerfile' // DockerHub repo/image name.
+     k8sCredentialsID             = 'kubernetes'              // KubeConfig credentials ID.    
+    
+    
+        Dockerfile_PATH     = './Dockerfile'	       //Path to Dockerfile in github repo
+        DEPLOYMENT_PATH     = './deployment.yaml'     //Path to deployment.yaml file in github repo 
    
     
     stages {       
