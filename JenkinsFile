@@ -8,7 +8,7 @@ pipeline {
     
         Dockerfile_PATH     = './Dockerfile'	       //Path to Dockerfile in github repo
         DEPLOYMENT_PATH     = './deployment.yaml'     //Path to deployment.yaml file in github repo 
-   
+   }
     
     stages {       
        
