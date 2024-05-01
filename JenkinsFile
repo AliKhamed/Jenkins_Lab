@@ -7,8 +7,7 @@ pipeline {
      k8sCredentialsID             = 'kubernetes'              // KubeConfig credentials ID.    
     
     
-        Dockerfile_PATH     = './Dockerfile'	       //Path to Dockerfile in github repo
-        DEPLOYMENT_PATH     = './deployment.yaml'     //Path to deployment.yaml file in github repo 
+         
    }
     
     stages {       
