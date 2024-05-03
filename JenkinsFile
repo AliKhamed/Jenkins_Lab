@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                   
-                   pushDockerImage("${dockerHubCredentialsID}", "${imageName}")
+                   pushDockerImage("${dockerhubCredentialsID}", "${imageName}")
                       
                 }
             }
@@ -43,7 +43,7 @@ pipeline {
             steps {
                 script { 
                  dir('k8s') {
-             deployOnKubernetes("${k8sCredentialsID}")
+             deployOnKubernetes("${kubernetesCredentialsID}")
                     }
                 }
             }
