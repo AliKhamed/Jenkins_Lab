@@ -3,7 +3,7 @@ pipeline {
     agent any
    environment {
    dockerHubCredentialsID    = 'dockerhub'                 // DockerHub credentials ID.
-   imageName                 = 'mostafayounis0/jenkins' // DockerHub repo/image name.
+   imageName                 = 'mostafayounis0/NTI-Task' // DockerHub repo/image name.
      k8sCredentialsID             = 'kubernetes'              // KubeConfig credentials ID.    
     
     
