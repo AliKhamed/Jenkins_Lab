@@ -1,9 +1,9 @@
-@Library('Jenkins-Shared-Library')_
+@Library('Jenkins-Shared-Library:main')_
 pipeline {
     agent any
    environment {
    dockerHubCredentialsID    = 'dockerhub'                 // DockerHub credentials ID.
-   imageName                 = 'mostafayounis0/NTI-Task' // DockerHub repo/image name.
+   imageName                 = 'mostafayounis0/dockerfile' // DockerHub repo/image name.
      k8sCredentialsID             = 'kubernetes'              // KubeConfig credentials ID.    
     
     
