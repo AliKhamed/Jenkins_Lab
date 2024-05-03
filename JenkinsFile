@@ -11,20 +11,21 @@ pipeline {
    }
     
     stages {       
-       
-       stage('Build and Push to DockerHub') {
+     stage('Build Docker image from Dockerfile in GitHub') {
             steps {
                 script {
-                    // Build Docker image
-                    sh "docker build -t ${APP_IMAGE_NAME}:${BUILD_NUMBER} -f ${Dockerfile_PATH} ."
-
-                    // Log in to DockerHub 
-                    withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
-                        sh "docker login -u \$DOCKERHUB_USERNAME -p \$DOCKERHUB_PASSWORD"
-                    }
-
-                    // Push image to Docker Hub
-                    sh "docker push ${APP_IMAGE_NAME}:${BUILD_NUMBER}"
+                  
+                   buildDockerImage("${imageName}")
+                      
+                }
+            }
+        }
+        stage('Push image to Docker hub') {
+            steps {
+                script {
+                  
+                   pushDockerImage("${dockerHubCredentialsID}", "${imageName}")
+                      
                 }
             }
         }
