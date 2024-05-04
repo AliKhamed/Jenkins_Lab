@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-app
+  name: dockerfile
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: python-app
+      app: dockerfile
   template:
     metadata:
       labels:
-        app: python-app
+        app: dockerfile
     spec:
       containers:
       - name: python-app
-        image: mostafayounis0/jenkins
+        image: dockerfile
         ports:
         - containerPort: 5000
