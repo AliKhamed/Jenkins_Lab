@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                   
-                   pushDockerImage("${dockerhubCredentialsID}", "${imageName}")
+                   pushDockerImage("${dockerHubCredentialsID}", "${imageName}")
                       
                 }
             }
