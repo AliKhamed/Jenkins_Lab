@@ -13,7 +13,7 @@ spec:
         app: dockerfile
     spec:
       containers:
-      - name: python-app
-        image: dockerfile
+      - name: NTI-Test
+        image: mostafayounis0/dockerfile
         ports:
         - containerPort: 5000
