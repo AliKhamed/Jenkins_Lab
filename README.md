@@ -66,7 +66,6 @@ This project sets up a Jenkins pipeline to automate the CI/CD process for an app
    
    ![](https://github.com/AliKhamed/ivolve_jenkins_lab/blob/master/screenshots/pipconfig1.png)
    
-   ![](https://github.com/AliKhamed/ivolve_jenkins_lab/blob/master/screenshots/pipconfig2.png)
    
 
    
@@ -159,7 +158,7 @@ stages {
 ### Check your Application 
 
 
-#### And add route link into your browser
+#### And openURL in your browser
 
 ![](https://github.com/AliKhamed/Jenkins_Lab/blob/main/screenshots/run2.png)
 
