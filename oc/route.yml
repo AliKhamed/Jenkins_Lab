@@ -5,7 +5,7 @@ metadata:
 spec:
   to:
     kind: Service
-    name: java-app-service
+    name: python-app-service
   port:
     targetPort: 5000
   tls:
