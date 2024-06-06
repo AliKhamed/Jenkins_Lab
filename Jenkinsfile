@@ -1,34 +1,56 @@
-@Library('Jenkins-Shared-Library')_
+@Library('Oc-Shared-Library')_
 pipeline {
     agent any
     
     environment {
-        dockerHubCredentialsID	    = 'DockerHub'  		    			      // DockerHub credentials ID.
-        imageName   		            = 'alikhames/python-app'     			// DockerHub repo/image name.
-	      k8sCredentialsID	          = 'kubernetes'	    				     // KubeConfig credentials ID.    
+        dockerHubCredentialsID	            = 'DockerHub'  		    			      // DockerHub credentials ID.
+        imageName   		            = 'alikhames/oc-python-app'     			// DockerHub repo/image name.
+	openshiftCredentialsID	            = 'openshift'	    				// KubeConfig credentials ID.   
+	nameSpace                           = 'alikhames'
+	clusterUrl                          = 'https://api.ocp-training.ivolve-test.com:6443'    
     }
     
-    stages {       
+          
+stages {       
        
-        stage('Build and Push Docker Image') {
+        stage('Build Docker image from Dockerfile in GitHub') {
             steps {
                 script {
                  	
-                 		buildandPushDockerImage("${dockerHubCredentialsID}", "${imageName}")
+                 		buildDockerImage("${imageName}")
+                      
+                }
+            }
+        }
+        stage('Push image to Docker hub') {
+            steps {
+                script {
+                 	
+                 		pushDockerImage("${dockerHubCredentialsID}", "${imageName}")
                       
                 }
             }
         }
 
-        stage('Deploy on k8s Cluster') {
+        stage('Edit new image in deployment.yml file') {
             steps {
                 script { 
-                	
-				                  deployOnKubernetes("${k8sCredentialsID}", "${imageName}")
-                    	
+                	dir('oc') {
+				        editNewImage("${imageName}")
+			}
                 }
             }
         }
+	stage('Deploy on OpenShift Cluster') {
+	     steps {
+	         script { 
+			dir('oc') {
+	                        
+					deployOnOc("${openshiftCredentialsID}", "${nameSpace}", "${clusterUrl}")
+				}
+	                }
+	            }
+	        }
     }
 
     post {
